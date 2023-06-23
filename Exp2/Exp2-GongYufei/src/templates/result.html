@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://img.picgo.net/2023/04/23/image5c03737491ecc742.png');
+            background-size: cover;
+            opacity: 0.9;
+        }
+        .res-font {
+            font-size: 24px;
+        }
+        .navbar {
+            background-color: #333;
+        }
+        .navbar-brand {
+            color: #fff;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+        .form-group {
+            font-size: 48px;
+            color:white;
+        }
+        .btn-center {
+            font-size: 24px;
+            margin-left: 45%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 res-font">
+        <div class="alert alert-success" role="alert">
+            <h1 class="alert-heading"><b>Result:</b></h1>
+            <hr>
+            <p class="mb-0"><b>Successfully Submitted!</b></p>
+            <p class="mb-0"><b>Your Input:</b> {{ .inputValue }}</p>
+            <p class="mb-0"><b>Your Ans:</b> {{ .ans }}</p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    //粒子颜色
+    const Colors = [
+        "red",
+        "blue",
+        "green",
+        "gary",
+        "orange",
+        "pink",
+        "yellow",
+        "purple",
+        "black",
+    ];
+    //定义粒子数量
+    const particlesNumber = 20;
+
+    function creatParticle(x, y) {
+        const ele = document.createElement("div");
+        //设置成一个小园形，自己也可以根据爱好设置成其他如心型、星型
+        ele.style.height = "10px";
+        ele.style.width = "10px";
+        ele.style.borderRadius = "5px";
+
+        //设置绝对位置
+        ele.style.position = "absolute";
+        ele.style.top = `${y}px`;
+        ele.style.left = `${x}px`;
+        //光标位于方块中央
+        ele.style.transform = "transform(-50%,-50%)";
+        ele.style.backgroundColor = Colors[Math.floor(Math.random() * Colors.length)];
+
+        /*animate(keysframes,options)函数,options可以是动画持续时间，也可以是多个属性值的对象
+         duration：持续时间，iterations：动画迭代次数(Infinity表示无限动画)，delay：添加到动画的延迟
+        */
+        const animation = ele.animate(
+            [
+                {
+                    transform: `translate(${(Math.random() - 0.5) * 500}px,${(Math.random() - 0.5) * 500}px) rotate(${Math.random() * 520}deg)`,
+                    opacity: 0
+                },
+            ],
+            {duration: 1000, iterations: 1}
+        );
+        //向网页添加元素
+        document.body.appendChild(ele);
+        //结束后将DOM产生的div去除
+        animation.onfinish = () => ele.remove();
+    }
+
+    //创建点击事件
+    document.addEventListener("click", (e) => {
+        //获取当前光标位置
+        const {clientX: x, clientY: y} = e;
+
+        //创建多个粒子
+        for (let index = 0; index < particlesNumber; index++) {
+            creatParticle(x, y);
+        }
+
+    });
+
+</script>
+
+<body>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/static/js/sakura-less.js"></script>
+</body>
