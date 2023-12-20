@@ -1,6 +1,5 @@
-# Machine-Intelligence-Course
+# Machine Intelligence
 BUPT 2023 SpringSemester - Machine-Intelligence-Curriculum-Design
 机器智能课程设计项目
-> Exp1暂未上传，Exp2 & Exp3所有代码已开源
 
-> 转载或使用最好注明出处
+> Lab1 暂未上传（本人重装系统的时候弄丢了 233），Lab2 & Lab3 所有代码已开源
